@@ -44,6 +44,9 @@ AFRAME.registerComponent("physics-grab", {
     <a-assets>
         <img id="pizza_floor" src="images/pizza-floor.jpg" />
         <img id="cheese" src="images/cheese_cheese.jpg" />
+        <img id="cheese2" src="images/cheese-back.jpg" />
+        <img id="masaborde" src="images/masaborde.jpg" />
+        <img id="wood" src="images/woodwood.jpg" />
     </a-assets>
 
     <a-entity
@@ -81,9 +84,9 @@ AFRAME.registerComponent("physics-grab", {
     <a-box
         physx-body="type: static-body=shape: box"
         class="environmentGround"
-        position="0 -0.5 0"
+        position="0 -0.5 -3"
         width="20" depth="20" height="0.1"
-        material="src: #pizza_floor;"
+        material="src: #wood;"
         shadow="receive: true;"
     >
 
@@ -94,7 +97,7 @@ AFRAME.registerComponent("physics-grab", {
         physics-grab
         position="-3 3 -5" rotation="5 10 15"
         radius="0.3" height="0.3"
-        material="src: #cheese;"
+        material="src: #cheese2;"
     >
     </a-cylinder>
     <a-cylinder physx-body="type: dynamic;"
@@ -102,7 +105,7 @@ AFRAME.registerComponent("physics-grab", {
         physics-grab
         position="3 3 -5" rotation="5 10 15"
         radius="0.3" height="0.3"
-        material="src: #cheese;"
+        material="src: #cheese2;"
     >
     </a-cylinder>
     <a-cylinder physx-body="type: dynamic;"
@@ -110,7 +113,7 @@ AFRAME.registerComponent("physics-grab", {
         physics-grab
         position="-2 3 -5" rotation="5 10 15"
         radius="0.3" height="0.3"
-        material="src: #cheese;"
+        material="src: #cheese2;"
     >
     </a-cylinder>
     <a-cylinder physx-body="type: dynamic;"
@@ -118,7 +121,7 @@ AFRAME.registerComponent("physics-grab", {
         physics-grab
         position="2 3 -5" rotation="5 10 15"
         radius="0.3" height="0.3"
-        material="src: #cheese;"
+        material="src: #cheese2;"
     >
     </a-cylinder>
     <!--<a-triangle 
@@ -130,5 +133,34 @@ AFRAME.registerComponent("physics-grab", {
         material="src: #cheese;"
     >
     </a-triangle>-->
+
+    <!-- Pac-man. -->
+    <a-cylinder physx-body="type: dynamic;"
+        raycaster-target="canGrab: true;"
+        physics-grab position="-4 3 -5" 
+        theta-start="2" theta-length="280" side="double"
+        radius="0.3" height="0.3"
+        material="src: #cheese2;"
+        >
+    </a-cylinder>
+    <a-cylinder physx-body="type: static;"
+        raycaster-target="canGrab: true;"
+        physics-grab position="0 3 5" 
+        side="double"
+        radius="3" height="0.3"
+        rotation="-45 0 0"
+        material="src: #pizza_floor;"
+        >
+    </a-cylinder>
+    <a-torus
+        physx-body="type: static;"
+        raycaster-target="canGrab: true;"
+        rotation="45 0 0"
+        physics-grab position="0 3 5"
+        radius="3" radius-tubular="0.1"
+        material="src: #masaborde;"
+    >
+    </a-torus>
+    
 </a-scene>
 </body>
